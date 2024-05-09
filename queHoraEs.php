@@ -9,23 +9,28 @@ function HorasAsegundos($hora){
     $horaAsegundos = 3600 * $hora;
     return $horaAsegundos;
 }
+function horasAminutos($hora){
+    $horaAminutos =  60 * 1;
+    return $horaAminutos;
+}
 
 
-if(isset($_POST['numero1']) && isset($_POST['numero2']) && isset($_POST['conversion'])){
-    echo "valores obtenidos";
+if(isset($_POST['numero1']) && isset($_POST['conversion'])){
+    
 
     $numero1 = $_POST['numero1'];
-    $numero2 = $_POST['numero2'];
     $opcion = $_POST['conversion'];
 
     switch ($opcion) {
         case '1':
             # code... para horas a segundos
-            echo "seleccionaste la opcion de horas a segundos";
+            $coversionSegundos = HorasAsegundos($numero1);
+            echo  $numero1.' hora(s) equivale a ' .$coversionSegundos.' segundos';
             break;
 
         case '2':
-            #code para horas a segundos
+            $conversionMinutos = horasAminutos($numero1);
+            echo $numero1.' hora(a)s equivale a '.$conversionMinutos.' minutos';                                                                                                                                       
             break;
         
         default:
@@ -54,9 +59,6 @@ if(isset($_POST['numero1']) && isset($_POST['numero2']) && isset($_POST['convers
     <form action="queHoraEs.php" method="post">
         <input type="number" name="numero1" id="numero1">
         <label for="numero1">Ingrese el numero 1 de la operacion</label>
-        <br>
-        <input type="numbre" name="numero2" id="numero2">
-        <label for="numero2">Ingrese el numero 2 de la operacion</label>
         <br>
         <select name="conversion" id="conversion">
             <option value="0" selected>Selecciona al conversion</option>
